@@ -1,13 +1,10 @@
 @extends('base')
-@section('title') Inicio @endsection
+@section('title') EMconstrucciones @endsection
 @section('content')
     <main>
         <div>
-
-        <img src="{{asset('images/Mi publicación2.jpg') }}" alt="">
-
+            <img src="{{asset('images/Mi publicación2.jpg') }}" alt="">
         </div>
-
 
     </main>
 

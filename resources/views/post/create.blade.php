@@ -15,7 +15,7 @@
 
     </div>
     <div class="form-group has-feedback">
-        <label class="form-label">CATEGORIA</label>
+        <label class="form-label">PUESTO DE TRABAJO</label>
         <select name="category_id" class="form-select" required>
             <option value="">Seleccione la Categoria</option>
             @foreach($categories as $category)

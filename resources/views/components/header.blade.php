@@ -1,3 +1,7 @@
+ <link rel="shortcut icon" type="image/png" href="{{ asset('/images/icono.jpg') }}">
+    <link rel="shortcut icon" sizes="192x192" href="{{ asset('/images/icono.jpg') }}">
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">EMconstrucciones</a>

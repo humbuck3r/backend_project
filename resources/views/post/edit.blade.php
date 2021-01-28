@@ -6,13 +6,17 @@
     {{ csrf_field() }}
     {{ method_field("PATCH") }}
     <div class="mb-3">
-        <label for="title" class="form-label">Titulo</label>
+        <label for="title" class="form-label">Nombre</label>
         <input type="text" class="form-control" id="title" name="title" value="{{ $post->title }}">
     </div>
+    <div class="mb-3">
+        <label for="title" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="title" name="author" value="{{ $post->author }}">
+    </div>
     <div class="form-group has-feedback">
-        <label class="form-label">Categoria</label>
+        <label class="form-label">Puesto de trabajo</label>
         <select name="category_id" class="form-select" required>
-            <option value="">Seleccione la Categoria</option>
+            <option value="">Seleccione el puesto de trabajo</option>
             @foreach($categories as $category)
                 <option value="{{ $category->id }}" selected="{{ $post->category_id == $category->id }}">{{ $category->name }}</option>
             @endforeach
@@ -30,10 +34,7 @@
         <label for="description" class="form-label">descripción</label>
         <textarea name="description" id="description" class="form-control" cols="30" rows="10">{{ $post->description }}</textarea>
     </div>
-    <div class="mb-3">
-        <label for="title" class="form-label">Autor</label>
-        <input type="text" class="form-control" id="title" name="author" value="{{ $post->author }}">
-    </div>
+
     <button type="submit" class="btn btn-primary">Guardar</button>
 </form>
 @endsection

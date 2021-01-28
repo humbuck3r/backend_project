@@ -24,7 +24,7 @@
         <thead>
             <tr>
                 <th>{{ "ID" }}</th>
-                <th>{{ "CATEGORIA" }}</th>
+                <th>{{ "PUESTO DE TRABAJO" }}</th>
                 <th>{{ "FOTO PERSONAL" }}</th>
                 <th>{{ "NOMBRE" }}</th>
                 <th>{{ "APELLIDO" }}</th>
