@@ -1,8 +1,22 @@
-<header class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <p class="h5 my-0 me-md-auto fw-normal">MundosE</p>
-  <nav class="my-2 my-md-0 me-md-3">
-    <a class="p-2 text-dark" href="#"{{route("home") }}>Home</a>
-    <a class="p-2 text-dark" href="#"{{ route("post.index") }}>Post</a>
-  </nav>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">EMconstrucciones</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="{{route("home") }}">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{route("post.index")}}">Nuestro personal</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ route("categories.index") }}">Categorias</a>
+        </li>
 
-</header>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -22,3 +22,5 @@ Route::group(['prefix' => 'post'], function () {
     Route::post('search','PostController@search')->name('post.search');
 });
 
+Route::resource('categories', 'CategoryController');
+    return view('post.category');

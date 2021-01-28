@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Category;
 use Illuminate\Http\Request;
-use Illuminate\support\facades\Storage;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -16,22 +17,22 @@ class PostController extends Controller
     public function index()
     {
         $data['posts'] = Post::paginate(5);
-        return view("post.index",$data);
-
+        return view("post.index", $data);
     }
 
-   public function search(Request $request)
+    public function search(Request $request)
     {
+        //$data = $request->all();
         $data = $request->input('search');
-        $query = post::select()
-            ->where('title','like',"%$data%")
-            ->orwhere('author', 'like', "%$data%")
-
+        $query = Post::select()
+            ->join('categories as cat', 'posts.category_id', '=', 'cat.id')
+            ->where('title', 'like', "%$data%")
+            ->orWhere('author', 'like', "%$data%")
+            ->orWhere('cat.name', 'like', "%$data%")
             ->get();
+
         return view("post.index")->with(["posts" => $query]);
-
     }
-
 
 
     /**
@@ -41,7 +42,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view("post.create");
+        $categories = Category::all();
+        return view("post.create")->with(["categories" => $categories]);
     }
 
     /**
@@ -55,12 +57,10 @@ class PostController extends Controller
         //$data = $request->all();
         $data = $request->except('_token');
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->store('uploads','public');
-
+            $data['image'] = $request->file('image')->store('uploads', 'public');
         }
         Post::insert($data);
         return redirect()->route("post.index");
-
     }
 
     /**
@@ -82,8 +82,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $data = Post::findOrfail($id);
-        return view("post.edit")->with(["post" => $data]);
+        $data = Post::findOrFail($id);
+        $categories = Category::all();
+        return view("post.edit")->with(["post" => $data, "categories" => $categories]);
     }
 
     /**
@@ -93,16 +94,16 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$id)
+    public function update(Request $request, $id)
     {
         //$data = $request->all();
-        $data = $request->except('_token','_method');
+        $data = $request->except('_token', '_method');
         if ($request->hasFile('image')) {
-            $post = Post::findorfail($id);
+            $post = Post::findOrFail($id);
             Storage::delete("public/$post->image");
             $data['image'] = $request->file('image')->store('uploads', 'public');
         }
-        Post::where('id','=','$id')->update($data);
+        Post::where('id', '=', $id)->update($data);
         return redirect()->route("post.index");
     }
 
