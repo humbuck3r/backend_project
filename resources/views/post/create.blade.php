@@ -1,6 +1,6 @@
  (37 sloc) 1.56 KB
 @extends('base')
-@section('title') Post Create @endsection
+@section('title') crear @endsection
 @section('content')
 <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}

@@ -1,5 +1,5 @@
 @extends('base')
-@section('title') Post @endsection
+@section('title') EM @endsection
 @section('content')
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">

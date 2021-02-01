@@ -1,5 +1,5 @@
 @extends('base')
-@section('title') Post Edit @endsection
+@section('title') editar @endsection
 @section('content')
 
 <form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
