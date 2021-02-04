@@ -23,4 +23,7 @@ Route::group(['prefix' => 'post'], function () {
 });
 
 Route::resource('categories', 'CategoryController');
-    return view('post.category');
+
+
+
+;

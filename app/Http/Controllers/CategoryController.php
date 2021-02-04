@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+
 
 class CategoryController extends Controller
 {
@@ -15,7 +17,7 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = category::all();
-        return view("post.category",['categories'=> $categories]);
+        return view("categories.index",['categories'=> $categories]);
     }
 
     /**
@@ -24,8 +26,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   $categories = Category::all();
+         return view("categories.create")->with(["categories"=> $categories]);
     }
 
     /**
@@ -36,7 +38,10 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->except('_token');
+        Category::insert($data);
+        Session::flash('alert-success', 'Se ha Creado la Categorías con éxito!');
+        return redirect()->route("categories.index");
     }
 
     /**
@@ -47,7 +52,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+
     }
 
     /**
@@ -58,7 +63,8 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        $data = Category::findOrFail($category);
+        return view("categories.edit")->with(["categories" => $data]);
     }
 
     /**
