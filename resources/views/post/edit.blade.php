@@ -2,7 +2,7 @@
 @section('title') editar @endsection
 @section('content')
 
-<form action="{{ route('post.update', $categories->id) }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('post.update', $post->id) }}" method="post" enctype="multipart/form-data">
     {{ csrf_field() }}
     {{ method_field("PATCH") }}
     <div class="mb-3">

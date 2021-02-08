@@ -23,7 +23,7 @@ Route::group(['prefix' => 'post'], function () {
 });
 
 Route::resource('categories', 'CategoryController');
-
+route::resource('contact', 'ContactController');
 
 
 ;

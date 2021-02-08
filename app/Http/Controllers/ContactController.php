@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
+use App\Contact;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-
-class CategoryController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = category::all();
-        return view("categories.index",['categories'=> $categories]);
+        $contact = contact::all();
+        return view("contact.index", ['contact' => $contact]);
     }
 
     /**
@@ -26,8 +24,8 @@ class CategoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   $categories = Category::all();
-         return view("categories.create")->with(["categories"=> $categories]);
+    {
+        //
     }
 
     /**
@@ -38,57 +36,52 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->except('_token');
-        Category::insert($data);
-        Session::flash('alert-success', "Se ha Creado la Categorías con éxito! {$data['name']}");
-        return redirect()->route("categories.index");
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Contact $contact)
     {
-
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Contact $contact)
     {
-        $data = Category::findOrFail($id);
-        return view("categories.edit")->with(["category" => $data]);
-
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Contact $contact)
     {
-
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route("categories.index");
+        contact::destroy($id);
+        return redirect()->route("contact.index");
     }
 }

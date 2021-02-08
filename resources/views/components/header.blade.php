@@ -19,7 +19,11 @@
         <li class="nav-item">
           <a class="nav-link" href="{{ route("categories.index") }}">Puestos de trabajo</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route("contact.index") }}">Contacto</a>
+        </li>
 
+        </li>
       </ul>
     </div>
   </div>
