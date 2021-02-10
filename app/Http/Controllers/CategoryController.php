@@ -20,6 +20,13 @@ class CategoryController extends Controller
         return view("categories.index",['categories'=> $categories]);
     }
 
+    public function list()
+    {
+        $data = category::all();
+        return response()->json( $data,200);
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -40,9 +47,21 @@ class CategoryController extends Controller
     {
         $data = $request->except('_token');
         Category::insert($data);
-        Session::flash('alert-success', "Se ha Creado la Categorías con éxito! {$data['name']}");
+        Session::flash('alert-success', 'Se ha Creado la Categorías con éxito!');
         return redirect()->route("categories.index");
     }
+
+    public function save(Request $request)
+    {
+        $category = new Category;
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+        return response()->json("la informacion se guador con exito", 201);
+    }
+
+
+
 
     /**
      * Display the specified resource.
@@ -90,5 +109,6 @@ class CategoryController extends Controller
     {
         Category::destroy($id);
         return redirect()->route("categories.index");
+        Session::flash('alert-success', 'Se ha eliminado con éxito!');
     }
 }

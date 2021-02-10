@@ -28,6 +28,12 @@ class ContactController extends Controller
         //
     }
 
+    public function save()
+    {
+        $data = contact::all();
+        return response()->json($data, 200);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
