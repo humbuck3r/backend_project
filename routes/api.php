@@ -24,6 +24,5 @@ Route::group(['prefix' => 'category'], function () {
 
 });
 Route::group(['prefix' => 'contact'], function () {
-
-    route::post('create', 'ContactController@save');
+    route::post('store', 'ContactController@store');
 });
